@@ -10,7 +10,6 @@ namespace SVM
     {
         static void Main(string[] args)
         {
-
             Power p1 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
             Power p2 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
             Power p3 = new Power("Spider Senses", 98, "Mental", "Spider stuff");

@@ -10,8 +10,6 @@ namespace SVM
 {
     class PaymentView
     {
-
-
         public void PayCheck()
         {
             string pattern = "^\d\d\d$";
