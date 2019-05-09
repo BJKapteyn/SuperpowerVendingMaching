@@ -30,8 +30,13 @@ namespace SVM
 
         public double CalculateSubTotal(int index, int quantity)
         {
+            for(int i= 0; i< Powers.Count; i++)
+            {
+               Powers[index] 
+            }
 
-            int total = 100;
+
+            int total = index * quantity;
             MenuView.SubTotal += total;
             return total;
         }
