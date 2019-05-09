@@ -8,7 +8,6 @@ namespace SVM
 {
     public class Validator
     {
-        //this
         public static bool YayOrNay(string YN)
         {
             if (YN == "Y")

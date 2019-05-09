@@ -8,6 +8,6 @@ namespace SVM
 {
     class DescriptionView
     {
-        //this
+        
     }
 }

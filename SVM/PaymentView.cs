@@ -8,7 +8,6 @@ namespace SVM
 {
     class PaymentView
     {
-        //this
         public void PayCheck()
         {
             //if(usertotal == FinalTotal)
