@@ -26,7 +26,8 @@ namespace SVM
 
             PaymentView pv = new PaymentView();
             //pv.PayCheck();
-            pv.PayCash();
+            //pv.PayCash();
+            pv.PayCredit();
 
             //Console.WriteLine("Welcome\n" +
             //    "Total price of (5) items: 100 bucks" +
