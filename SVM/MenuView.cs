@@ -8,6 +8,7 @@ namespace SVM
 {
     class MenuView
     {
+        //this
         public static double SubTotal { get; set; }
         public static double FinalTotal { get; set; } = 0;
 

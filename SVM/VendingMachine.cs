@@ -8,6 +8,7 @@ namespace SVM
 {
     class VendingMachine
     {
+        //this
         public List<Power> Powers { get; set; }
         public static List<Power> PurchasedItems { get; set; }
 

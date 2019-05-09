@@ -8,5 +8,6 @@ namespace SVM
 {
     class RunningTotalView
     {
+        //this
     }
 }

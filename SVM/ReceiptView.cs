@@ -10,7 +10,7 @@ namespace SVM
     {
         public static void PrintReciept(List<Power> powers)
         {
-
+            //this
         }
     }
 }
