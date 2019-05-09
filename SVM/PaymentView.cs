@@ -12,19 +12,21 @@ namespace SVM
     {
         public void PayCheck()
         {
-            string pattern = "^\d\d\d$";
-            Regex rgx = new Regex();
-            Console.WriteLine("Please enter a check number: ");
+            string pattern = "^\\d{3}$";
+            Regex rgx = new Regex(pattern);
+            Console.Write("Please enter a check number: ");
             string userInput = Console.ReadLine().Trim();
-            Int32.TryParse(userInput, out int checkNumber);
+            bool isMatch = rgx.IsMatch(userInput);
             
-            if(checkNumber > 0)               
+            if(isMatch)               
             {
-                ReceiptView.PrintReciept(VendingMachine.PurchasedItems);
+                Console.WriteLine("Match!"); // test                
+                //ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
             else
             {
                 Console.WriteLine("Please enter a valid chack number as a 3 digit integer. Please try again.");
+                PayCheck();
             }
 
         }
@@ -36,7 +38,17 @@ namespace SVM
 
         public void PayCash()
         {
-            ReceiptView.PrintReciept(VendingMachine.PurchasedItems);
+            Console.Write("Please insert cash: ");
+            decimal.TryParse(Console.ReadLine(), out decimal cash);
+
+            int decimalPlaces = BitConverter.GetBytes(decimal.GetBits(cash)[3])[2];
+
+            if decimalPlaces
+            
+
+
+            
+            //ReceiptView.PrintReciept(VendingMachine.PurchasedItems);
         }
     }
 }

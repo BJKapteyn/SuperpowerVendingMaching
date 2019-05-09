@@ -32,7 +32,7 @@ namespace SVM
         {
             for(int i= 0; i< Powers.Count; i++)
             {
-               Powers[index] 
+                //Powers[index] 
             }
 
 
