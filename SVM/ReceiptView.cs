@@ -16,9 +16,11 @@ namespace SVM
             {
                 Console.WriteLine($"\n{AddSpaces(powers[i].Name)}{powers[i].Price}");
             }
-            Console.WriteLine($"\n\n{AddSpaces("Sub Total:")}{MenuView.SubTotal}");
-            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%):")}{MenuView.SubTotal * .06}");
-            Console.WriteLine($"\n{AddSpaces("Total:")}{MenuView.FinalTotal}");
+            double sub = MenuView.SubTotal;
+            double tax = sub * .06;
+            Console.WriteLine($"\n\n{AddSpaces("Sub Total:")}{sub}");
+            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%):")}{tax}");
+            Console.WriteLine($"\n{AddSpaces("Total:")}{MenuView.FinalTotal + tax}");
         }
 
         public static string AddSpaces(string input)
@@ -40,13 +42,36 @@ namespace SVM
             }
             double sub = MenuView.SubTotal;
             double tax = sub * .06;
-            double total = sub + tax;
+            double total = MenuView.SubTotal * 1.06;
             Console.WriteLine($"\n\n{AddSpaces("Sub Total:")}{sub}");
             Console.WriteLine($"\n{AddSpaces("Sales Tax (6%):")}{tax}");
-            Console.WriteLine($"\n{AddSpaces("Total:")}{total}");
+            Console.WriteLine($"\n{AddSpaces("Total:")}{VendingMachine.CalculateTotal()}");
+            Console.WriteLine("Any key to Check out");
             Console.ReadKey();
-            Console.WriteLine("Press any key to go back...");
-            MenuView.DisplayMenu(MasterList, BoughtPowers);
+            Console.WriteLine("Please enter Payment:" +
+                "\n1) check" +
+                "\n2) cash" +
+                "\n3) credit");
+            int choice = 0;
+            Validator.IsInRangeIndex(Console.ReadLine(), 1, 3, out choice);
+            switch(choice)
+            {
+                case 0:
+                    PaymentView.PayCheck();
+                    break;
+                case 1:
+                    PaymentView.PayCash();
+                    break;
+                case 2:
+                    PaymentView.PayCredit();
+                    break;
+                default:
+                    Console.WriteLine("Ya blew it");
+                    break;
+            }
+
+
+
         }
     }
 }
