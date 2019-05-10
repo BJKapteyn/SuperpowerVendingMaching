@@ -24,10 +24,10 @@ namespace SVM
             Power p12 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
             List<Power> powers = new List<Power>() { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12 };
 
-            PaymentView pv = new PaymentView();
+            VendingMachine vendor = new VendingMachine(powers);
+            vendor.WelcomeAction();
             //pv.PayCheck();
             //pv.PayCash();
-            pv.PayCredit();
 
             //Console.WriteLine("Welcome\n" +
             //    "Total price of (5) items: 100 bucks" +

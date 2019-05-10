@@ -18,8 +18,9 @@ namespace SVM
         }
         public void WelcomeAction()
         {
-            Console.WriteLine("welcome");
+            Console.WriteLine("Welcome to the Super Powers Store!");
             MenuView.DisplayMenu(Powers);
+            Console.ReadKey();
         }
 
         public double CalculateTotal()

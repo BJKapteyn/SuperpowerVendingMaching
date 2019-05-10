@@ -14,6 +14,27 @@ namespace SVM
 
         public static void DisplayMenu(List<Power> powers)
         {
+            Console.WriteLine($"Total Purchases: {SubTotal}\n");
+            for(int i = 0; i < powers.Count; i++)
+            {
+                Console.WriteLine($"Power {i+1}: {powers[i].Name}");
+            }
+            int choice;
+            Console.WriteLine("Please select:");
+            Console.WriteLine("1) Buy" +
+                "\n2) Checkout");
+            Validator.IsInRangeIndex(Console.ReadLine(), 1, 2, out choice);
+            if(choice == 0)
+            {
+                int index;
+                Console.WriteLine("Select index of the power you'd like.");
+                Validator.IsInRangeIndex(Console.ReadLine(), 1, powers.Count, out index);
+                PurchaseView.Purchase(powers[index], powers);
+            }
+            else if(choice == 1)
+            {
+                Console.WriteLine("To Cart view");
+            }
             //display list of powers
             //if user chooses to buy 
                 //ask how many
