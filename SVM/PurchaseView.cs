@@ -49,6 +49,10 @@ namespace SVM
                             else if (quantity > 0)
                             {
                                 double total = VendingMachine.CalculateSubTotal(quantity, power);
+                                for(int i = 0; i < quantity; i++)
+                                {
+                                    BoughtPowers.Add(power);
+                                }
                                 Console.WriteLine($"Total purchase comes to {total}. Press any key to return to main menu...");
                                 Console.ReadKey();
                                 MenuView.DisplayMenu(powers, BoughtPowers);

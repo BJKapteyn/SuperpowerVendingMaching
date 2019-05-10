@@ -33,7 +33,17 @@ namespace SVM
             }
             else if(choice == 1)
             {
-                Console.WriteLine("To Cart view");
+                if(BoughtPower.Count == 0)
+                {
+                    Console.WriteLine("There is nothing in your cart. Any key to return...");
+                    Console.ReadKey();
+                    DisplayMenu(powers, BoughtPower);
+
+                }
+                else
+                {
+                    ReceiptView.PrintCart(BoughtPower, powers);
+                }
             }
             //display list of powers
             //if user chooses to buy 

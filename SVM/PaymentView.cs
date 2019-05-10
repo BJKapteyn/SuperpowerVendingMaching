@@ -10,7 +10,7 @@ namespace SVM
 {
     class PaymentView
     {
-        public void PayCheck()
+        public static void PayCheck()
         {
             string pattern = "^\\d{3}$";
             Regex rgx = new Regex(pattern);
@@ -21,7 +21,7 @@ namespace SVM
             if(isMatch)               
             {
                 Console.WriteLine("Match!"); // test                
-                //ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
+                ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
             else
             {
@@ -30,7 +30,7 @@ namespace SVM
             }
         }
 
-        public void PayCredit()
+        public static void PayCredit()
         {
             Console.Write($"Your total is: ${MenuView.FinalTotal}.");
 
@@ -114,11 +114,11 @@ namespace SVM
             if (validCcNum && validCvv && validExp)
             {
                 Console.WriteLine("all fields are valid"); //test
-                //ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
+                ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
         }
 
-        public void PayCash()
+        public static void PayCash()
         {
             Console.Write("Please insert cash: ");
             decimal.TryParse(Console.ReadLine(), out decimal cash);
@@ -135,7 +135,7 @@ namespace SVM
             {
                 Console.WriteLine("valid input"); //test
                 Console.WriteLine($"You paid: ${cash}. The total is {MenuView.FinalTotal}. Here is your change: {cash - (decimal)MenuView.FinalTotal} ");
-                //ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
+                ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
         }
     }

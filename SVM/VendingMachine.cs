@@ -24,7 +24,7 @@ namespace SVM
             Console.ReadKey();
         }
 
-        public double CalculateTotal()
+        public static double CalculateTotal()
         {
             double total = MenuView.SubTotal *= 1.06;
             MenuView.FinalTotal = total;
