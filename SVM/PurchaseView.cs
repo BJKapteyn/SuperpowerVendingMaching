@@ -9,7 +9,7 @@ namespace SVM
     class PurchaseView
     {
         //added list of powers to be able to go back to main menu with the same list
-        public static void Purchase(Power power, List<Power> powers)
+        public static void Purchase(Power power, List<Power> powers, List<Power> BoughtPowers)
         {
             Console.Clear();
             Console.WriteLine($"Power name:         {power.Name}" +
@@ -33,7 +33,7 @@ namespace SVM
                     string uChoice = Console.ReadLine().ToUpper();
                     if (uChoice == "M")
                     {
-                        MenuView.DisplayMenu(powers);
+                        MenuView.DisplayMenu(powers, BoughtPowers);
                         break;
                     }
                     else
@@ -43,7 +43,7 @@ namespace SVM
                             if (quantity == 0)
                             {
                                 Console.WriteLine("Back to Main Menu.");
-                                MenuView.DisplayMenu(powers);
+                                MenuView.DisplayMenu(powers, BoughtPowers);
                                 break;
                             }
                             else if (quantity > 0)
@@ -51,7 +51,7 @@ namespace SVM
                                 double total = VendingMachine.CalculateSubTotal(quantity, power);
                                 Console.WriteLine($"Total purchase comes to {total}. Press any key to return to main menu...");
                                 Console.ReadKey();
-                                MenuView.DisplayMenu(powers);
+                                MenuView.DisplayMenu(powers, BoughtPowers);
                                 break;
                             }
                             else
@@ -65,7 +65,7 @@ namespace SVM
             }
             else if(index == 1)
             {
-                MenuView.DisplayMenu(powers);
+                MenuView.DisplayMenu(powers, BoughtPowers);
             }
             else
             {

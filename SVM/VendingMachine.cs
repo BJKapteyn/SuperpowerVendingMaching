@@ -12,14 +12,15 @@ namespace SVM
         public static List<Power> PurchasedItems { get; set; }
         
 
-        public VendingMachine(List<Power> powers)
+        public VendingMachine(List<Power> powers, List<Power> BoughtPower)
         {
             Powers = powers;
+            PurchasedItems = BoughtPower;
         }
         public void WelcomeAction()
         {
             Console.WriteLine("Welcome to the Super Powers Store!");
-            MenuView.DisplayMenu(Powers);
+            MenuView.DisplayMenu(Powers, PurchasedItems);
             Console.ReadKey();
         }
 

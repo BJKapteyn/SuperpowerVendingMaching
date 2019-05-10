@@ -30,5 +30,23 @@ namespace SVM
             }
             return input;
         }
+        public static void PrintCart(List<Power> BoughtPowers, List<Power> MasterList)
+        {
+            Console.WriteLine("Here is your cart:\n");
+            Console.WriteLine($"{AddSpaces("Item")}Price");
+            for (int i = 0; i < BoughtPowers.Count; i++)
+            {
+                Console.WriteLine($"\n{AddSpaces(BoughtPowers[i].Name)}{BoughtPowers[i].Price}");
+            }
+            double sub = MenuView.SubTotal;
+            double tax = sub * .06;
+            double total = sub + tax;
+            Console.WriteLine($"\n\n{AddSpaces("Sub Total:")}{sub}");
+            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%):")}{tax}");
+            Console.WriteLine($"\n{AddSpaces("Total:")}{total}");
+            Console.ReadKey();
+            Console.WriteLine("Press any key to go back...");
+            MenuView.DisplayMenu(MasterList, BoughtPowers);
+        }
     }
 }

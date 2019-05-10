@@ -12,7 +12,7 @@ namespace SVM
         public static double SubTotal { get; set; }
         public static double FinalTotal { get; set; } = 0;
 
-        public static void DisplayMenu(List<Power> powers)
+        public static void DisplayMenu(List<Power> powers, List<Power> BoughtPower)
         {
             Console.WriteLine($"Total Purchases: {SubTotal}\n");
             for(int i = 0; i < powers.Count; i++)
@@ -29,7 +29,7 @@ namespace SVM
                 int index;
                 Console.WriteLine("Select index of the power you'd like.");
                 Validator.IsInRangeIndex(Console.ReadLine(), 1, powers.Count, out index);
-                PurchaseView.Purchase(powers[index], powers);
+                PurchaseView.Purchase(powers[index], powers, BoughtPower);
             }
             else if(choice == 1)
             {
