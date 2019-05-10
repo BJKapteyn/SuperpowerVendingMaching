@@ -14,10 +14,10 @@ namespace SVM
             Power p2 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
             Power p3 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
             Power p4 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
-            Power p5 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
-            Power p6 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
-            Power p7 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
-            Power p8 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
+            Power p5 = new Power("Time Travel", 300.99, "Physical", "Travel to any time or era you wish.");
+            Power p6 = new Power("Elastic Girl/Boy", 75.25, "Physical", "Stretch your limbs,torso and head to indefinite length without any harm to you.");
+            Power p7 = new Power("Do Little", 50, "Mental", "Understand and speak to animals.");
+            Power p8 = new Power("Shape Shifter", 127.88, "Physical", "Shift into any animal or object at will.");
             Power p9 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
             Power p10 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
             Power p11 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
