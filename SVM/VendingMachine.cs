@@ -31,6 +31,7 @@ namespace SVM
 
         public double CalculateSubTotal(int index, int quantity)
         {
+
             double price= Powers[index].Price;
 
             double total = price * quantity;
