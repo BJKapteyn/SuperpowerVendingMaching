@@ -10,10 +10,10 @@ namespace SVM
     {
         static void Main(string[] args)
         {
-            Power p1 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
-            Power p2 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
-            Power p3 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
-            Power p4 = new Power("Spider Senses", 98, "Mental", "Spider stuff");
+            Power p1 = new Power("Loch Ness Monster Summoning", 3.50, "Arcane", "Will summon a very moochy Loch Ness Monster. Beware, sometimes he shows up uninvited.");
+            Power p2 = new Power("Laser Gun", 1337, "Physical", "This isn't a super power so much as it's a laser gun. The destruction it causes is super cool though.");
+            Power p3 = new Power("Pooping Pennies", 1, "Physical", "In 100 days or so, this one pays for itself!");
+            Power p4 = new Power("Reverse Telepathy", .30, "Mental", "Everybody can hear your thoughts. Never tip toe through tulips again!");
             Power p5 = new Power("Time Travel", 300.99, "Physical", "Travel to any time or era you wish.");
             Power p6 = new Power("Elastic Girl/Boy", 75.25, "Physical", "Stretch your limbs,torso and head to indefinite length without any harm to you.");
             Power p7 = new Power("Do Little", 50, "Mental", "Understand and speak to animals.");
