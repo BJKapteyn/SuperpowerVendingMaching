@@ -36,14 +36,14 @@ namespace SVM
 
             Regex ccNumRgx = new Regex("^\\d{3}$");
             Regex cvvRgx = new Regex("^\\d{3}$");
-            Regex expRgx = new Regex(@"^ (0[1 - 9] | 1[0 - 2])$");
-            
+            Regex monthCheck = new Regex(@"^(0[1-9]|1[0-2])$");
+            Regex yearCheck = new Regex(@"^20[0-9]{2}$");
 
             bool validCcNum = false;
             bool validCvv = false;
             bool validExp = false;
 
-            while(! validCcNum)
+            while (!validCcNum)
             {
                 Console.Write("Please insert your credit card number: ");
                 string ccNum = Console.ReadLine();
@@ -58,10 +58,9 @@ namespace SVM
                 {
                     Console.WriteLine("Invalid input. Credit card must be 16 digits long and have no spaces.");
                 }
-
             }
 
-            while(! validCvv)
+            while (!validCvv)
             {
                 Console.Write("Please enter your cvv: ");
                 string cvv = Console.ReadLine();
@@ -80,19 +79,36 @@ namespace SVM
 
             while (! validExp)
             {
-                Console.WriteLine("Please enter your expiration date");
-                string exp = Console.ReadLine();
-                bool isMatchExp = expRgx.IsMatch(exp);
+                Console.Write("Please enter your expiration date: ");
 
-                if (isMatchExp)
+                string expiryDate = Console.ReadLine();
+                string[] dateParts = expiryDate.Split('/'); //expiry date in from MM/yyyy   
+
+                try
                 {
-                    Console.WriteLine("valid exp"); //test
-                    validExp = true;
+                    if (!monthCheck.IsMatch(dateParts[0]) || !yearCheck.IsMatch(dateParts[1])) // <3 - 6>
+                    {
+                        Console.WriteLine("Invalid input. Please input as MM/YYYY"); // ^ check date format is valid as "MM/yyyy"
+                    }
+                    else
+                    {
+                        Console.WriteLine("Valid input."); // test
+                        validExp = true;
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine("Invalid input. Expiration date must be formatted dd/yy.");
+                    Console.WriteLine(e.GetType()); // test
+                    Console.WriteLine("Invalid input. Please input as MM/YYYY");
                 }
+
+                // I'm not toally sure how the following lines of code are working. Mess with this later and try to break it. 
+                int year = int.Parse(dateParts[1]);
+                int month = int.Parse(dateParts[0]);
+                int lastDateOfExpiryMonth = DateTime.DaysInMonth(year, month); //get actual expiry date
+                DateTime cardExpiry = new DateTime(year, month, lastDateOfExpiryMonth, 23, 59, 59);
+                // check expiry greater than today & within next 6 years <7, 8>>
+                Console.WriteLine(cardExpiry > DateTime.Now && cardExpiry < DateTime.Now.AddYears(6));
             }
             
             if (validCcNum && validCvv && validExp)

@@ -9,9 +9,6 @@ namespace SVM
     class RunningTotalView
     {
         public static double VendingMachine { get; set;}
-        {
-
-        }
 
     }
 }
