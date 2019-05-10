@@ -39,6 +39,13 @@ namespace SVM
             return total;
         }
 
+        public static double CalculateSubTotal(int quantity, Power power)
+        {
+            double total = power.Price * (double)quantity;
+            MenuView.SubTotal += total;
+            return total;
+        }
+
         
     }
 }

@@ -14,12 +14,16 @@ namespace SVM
             Console.WriteLine($"{AddSpaces("Item")}Price");
             for (int i = 0; i < powers.Count; i++)
             {
-                Console.WriteLine($"{AddSpaces(powers[i].Name)}{powers[i].Price}");
+                Console.WriteLine($"\n{AddSpaces(powers[i].Name)}{powers[i].Price}");
             }
+            Console.WriteLine($"\n\n{AddSpaces("Sub Total:")}{MenuView.SubTotal}");
+            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%):")}{MenuView.SubTotal * .06}");
+            Console.WriteLine($"\n{AddSpaces("Total:")}{MenuView.FinalTotal}");
         }
+
         public static string AddSpaces(string input)
         {
-            int spaces = 20 - input.Length;
+            int spaces = 30 - input.Length;
             for (int i = 0; i < spaces; i++)
             {
                 input += " ";

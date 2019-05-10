@@ -25,7 +25,6 @@ namespace SVM
             }
             return false;
         }
-        int x;
         public static void IsInRangeIndex(string choice, int minVal, int maxVal, out int x)
         {
             int num;
