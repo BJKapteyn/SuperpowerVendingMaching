@@ -26,8 +26,9 @@ namespace SVM
 
         public static void CalculateTotal()
         {
-            double total = MenuView.SubTotal * 1.06;
-            MenuView.FinalTotal = total;
+
+            double total = Math.Round(MenuView.SubTotal * 1.06, 2);
+            MenuView.FinalTotal = Math.Round(total, 2);
         }
 
         public double CalculateSubTotal(int index, int quantity)
@@ -35,14 +36,14 @@ namespace SVM
 
             double price= Powers[index].Price;
 
-            double total = price * quantity;
+            double total = Math.Round(price * quantity, 2);
             MenuView.SubTotal += total;
             return total;
         }
 
         public static double CalculateSubTotal(int quantity, Power power)
         {
-            double total = power.Price * (double)quantity;
+            double total = Math.Round(power.Price * (double)quantity, 2);
             MenuView.SubTotal += total;
             return total;
         }
