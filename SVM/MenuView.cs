@@ -19,6 +19,7 @@ namespace SVM
             {
                 Console.WriteLine($"Power {i+1}: {powers[i].Name}");
             }
+
             int choice;
             Console.WriteLine("Please select:");
             Console.WriteLine("1) Buy" +
