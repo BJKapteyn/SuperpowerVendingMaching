@@ -15,7 +15,7 @@ namespace SVM
             Console.WriteLine($"Power name:         {power.Name}" +
                             $"\nCategory:           {power.Category}" +
                             $"\nDescription:        {power.Description}" +
-                            $"\nPrice:              {power.Price}");
+                            $"\nPrice:              {Math.Round(power.Price, 2)}");
             Console.WriteLine("\nPlease select an action:" +
                               "\n1) Buy" +
                               "\n2) Main Menu");
@@ -33,6 +33,8 @@ namespace SVM
                     string uChoice = Console.ReadLine().ToUpper();
                     if (uChoice == "M")
                     {
+                        // I don't think we are ever getting here. Instead, this condition is running @ line 74. 
+                        Console.Clear();
                         MenuView.DisplayMenu(powers, BoughtPowers);
                         break;
                     }
@@ -42,6 +44,7 @@ namespace SVM
                         {
                             if (quantity == 0)
                             {
+
                                 Console.WriteLine("Back to Main Menu.");
                                 MenuView.DisplayMenu(powers, BoughtPowers);
                                 break;
@@ -53,8 +56,9 @@ namespace SVM
                                 {
                                     BoughtPowers.Add(power);
                                 }
-                                Console.WriteLine($"Total purchase comes to {total}. Press any key to return to main menu...");
+                                Console.WriteLine($"Total purchase comes to ${total}. Press any key to return to main menu...");
                                 Console.ReadKey();
+                                Console.Clear();
                                 MenuView.DisplayMenu(powers, BoughtPowers);
                                 break;
                             }
@@ -69,6 +73,7 @@ namespace SVM
             }
             else if(index == 1)
             {
+                Console.Clear();
                 MenuView.DisplayMenu(powers, BoughtPowers);
             }
             else

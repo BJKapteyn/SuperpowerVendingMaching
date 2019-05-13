@@ -18,9 +18,9 @@ namespace SVM
             }
             double sub = MenuView.SubTotal;
             double tax = sub * .06;
-            Console.WriteLine($"\n\n{AddSpaces("Sub Total:")}{sub}");
-            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%):")}{tax}");
-            Console.WriteLine($"\n{AddSpaces("Total:")}{MenuView.FinalTotal}");
+            Console.WriteLine($"\n\n{AddSpaces("Sub Total: ")}${sub}");
+            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%): ")}${Math.Round(tax, 2)}");
+            Console.WriteLine($"\n{AddSpaces("Total: ")}${MenuView.FinalTotal}");
         }
 
         public static string AddSpaces(string input)
@@ -38,14 +38,14 @@ namespace SVM
             Console.WriteLine($"{AddSpaces("Item")}Price");
             for (int i = 0; i < BoughtPowers.Count; i++)
             {
-                Console.WriteLine($"\n{AddSpaces(BoughtPowers[i].Name)}{BoughtPowers[i].Price}");
+                Console.WriteLine($"\n{AddSpaces(BoughtPowers[i].Name)} {BoughtPowers[i].Price}");
             }
             double sub = MenuView.SubTotal;
             double tax = sub * .06;
             VendingMachine.CalculateTotal();
-            Console.WriteLine($"\n\n{AddSpaces("Sub Total:")}{sub}");
-            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%):")}{tax}");
-            Console.WriteLine($"\n{AddSpaces("Total:")}{MenuView.FinalTotal}");
+            Console.WriteLine($"\n\n{AddSpaces("Sub Total: ")}${sub}");
+            Console.WriteLine($"\n{AddSpaces("Sales Tax (6%): ")}${Math.Round(tax, 2)}");
+            Console.WriteLine($"\n{AddSpaces("Total: ")}${MenuView.FinalTotal}");
             Console.WriteLine("Any key to Check out");
             Console.ReadKey();
             Console.WriteLine("Please enter Payment:" +

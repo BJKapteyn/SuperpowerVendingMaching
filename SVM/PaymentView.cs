@@ -12,7 +12,7 @@ namespace SVM
     {
         public static void PayCheck()
         {
-            string pattern = "^\\d{3}$";
+            string pattern = "^\\d{4}$";
             Regex rgx = new Regex(pattern);
             Console.Write($" Your total is: ${MenuView.FinalTotal} Please enter a check number: ");
             string userInput = Console.ReadLine().Trim();
@@ -20,12 +20,11 @@ namespace SVM
             
             if(isMatch)               
             {
-                Console.WriteLine("Match!"); // test                
                 ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
             else
             {
-                Console.WriteLine($"Your total is: ${MenuView.FinalTotal}Please enter a valid chack number as a 3 digit integer. Please try again.");
+                Console.WriteLine($"Your total is: ${MenuView.FinalTotal}. Please enter a valid chack number as a 4 digit integer. Please try again.");
                 PayCheck();
             }
         }
@@ -34,7 +33,7 @@ namespace SVM
         {
             Console.Write($"Your total is: ${MenuView.FinalTotal}.");
 
-            Regex ccNumRgx = new Regex("^\\d{3}$");
+            Regex ccNumRgx = new Regex("^\\d{16}$");
             Regex cvvRgx = new Regex("^\\d{3}$");
             Regex monthCheck = new Regex(@"^(0[1-9]|1[0-2])$");
             Regex yearCheck = new Regex(@"^20[0-9]{2}$");
@@ -51,7 +50,6 @@ namespace SVM
 
                 if (isMatchCcNum)
                 {
-                    Console.WriteLine("valid ccNum"); //test
                     validCcNum = true;
                 }
                 else
@@ -62,18 +60,17 @@ namespace SVM
 
             while (!validCvv)
             {
-                Console.Write("Please enter your cvv: ");
+                Console.Write("Please enter your CVV: ");
                 string cvv = Console.ReadLine();
                 bool isMatchCvv = cvvRgx.IsMatch(cvv);
 
                 if (isMatchCvv)
                 {
-                    Console.WriteLine("valid cvv"); //test
                     validCvv = true;
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Cvv must be 3 digits long and have no spaces.");
+                    Console.WriteLine("Invalid input. CVV must be 3 digits long and have no spaces.");
                 }
             }
 
@@ -92,13 +89,11 @@ namespace SVM
                     }
                     else
                     {
-                        Console.WriteLine("Valid input."); // test
                         validExp = true;
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.GetType()); // test
                     Console.WriteLine("Invalid input. Please input as MM/YYYY");
                 }
 
@@ -113,7 +108,6 @@ namespace SVM
             
             if (validCcNum && validCvv && validExp)
             {
-                Console.WriteLine("all fields are valid"); //test
                 ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
         }
@@ -133,8 +127,7 @@ namespace SVM
             }
             else
             {
-                Console.WriteLine("valid input"); //test
-                Console.WriteLine($"You paid: ${cash}. The total is {MenuView.FinalTotal}. Here is your change: {cash - (decimal)MenuView.FinalTotal} ");
+                Console.WriteLine($"You paid: ${cash}. The total is ${MenuView.FinalTotal}. Here is your change: ${cash - (decimal)MenuView.FinalTotal} ");
                 ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
         }
