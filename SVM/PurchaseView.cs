@@ -8,7 +8,7 @@ namespace SVM
 {
     class PurchaseView
     {
-        //added list of powers to be able to go back to main menu with the same list
+        // Display more info to user and allow them to buy the power and / or go back to the main menu
         public static void Purchase(Power power, List<Power> powers, List<Power> BoughtPowers)
         {
             Console.Clear();
@@ -22,7 +22,8 @@ namespace SVM
 
             int index = 0;
             Validator.IsInRangeIndex(Console.ReadLine(), 1, 2, out index);
-            if (index == 0)
+
+            if (index == 0) // user selects "1"
             {
                 while (true)
                 {
@@ -33,8 +34,8 @@ namespace SVM
                     string uChoice = Console.ReadLine().ToUpper();
                     if (uChoice == "M")
                     {
-                        // I don't think we are ever getting here. Instead, this condition is running @ line 74. 
                         Console.Clear();
+                        // If user changes their mind, they can return to Main Menu without buying the power.
                         MenuView.DisplayMenu(powers, BoughtPowers);
                         break;
                     }
@@ -44,18 +45,21 @@ namespace SVM
                         {
                             if (quantity == 0)
                             {
-
                                 Console.WriteLine("Back to Main Menu.");
                                 MenuView.DisplayMenu(powers, BoughtPowers);
                                 break;
                             }
                             else if (quantity > 0)
                             {
+                                // If the user buys something, update the SubTotal and add the bought power to the list BoughtPowers
+                                // and return to Main Menu.
                                 double total = VendingMachine.CalculateSubTotal(quantity, power);
+
                                 for(int i = 0; i < quantity; i++)
                                 {
                                     BoughtPowers.Add(power);
                                 }
+
                                 Console.WriteLine($"Total purchase comes to ${total}. Press any key to return to main menu...");
                                 Console.ReadKey();
                                 Console.Clear();
@@ -71,16 +75,17 @@ namespace SVM
                     }
                 }
             }
-            else if(index == 1)
+            // If the user doesn't want to buy the power after getting more info, they can go back to the Main Menu
+            else if(index == 1) // user selects "2"
             {
                 Console.Clear();
                 MenuView.DisplayMenu(powers, BoughtPowers);
             }
-            else
+
+            else // Should never get here...
             {
                 Console.WriteLine("Error");
             }
-
         }
     }
 }

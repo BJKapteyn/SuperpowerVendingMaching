@@ -10,6 +10,7 @@ namespace SVM
 {
     class PaymentView
     {
+        // When user want to pay with a check
         public static void PayCheck()
         {
             string pattern = "^\\d{4}$";
@@ -18,6 +19,7 @@ namespace SVM
             string userInput = Console.ReadLine().Trim();
             bool isMatch = rgx.IsMatch(userInput);
             
+            // If the user enters a valid check number, print a receipt
             if(isMatch)               
             {
                 ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
@@ -29,6 +31,7 @@ namespace SVM
             }
         }
 
+        // When user want to pay with a credit card
         public static void PayCredit()
         {
             Console.Write($"Your total is: ${MenuView.FinalTotal}.");
@@ -42,6 +45,7 @@ namespace SVM
             bool validCvv = false;
             bool validExp = false;
 
+            // Validate CCNum
             while (!validCcNum)
             {
                 Console.Write("Please insert your credit card number: ");
@@ -58,6 +62,7 @@ namespace SVM
                 }
             }
 
+            //Validate CVV
             while (!validCvv)
             {
                 Console.Write("Please enter your CVV: ");
@@ -74,6 +79,7 @@ namespace SVM
                 }
             }
 
+            // Validate ExpDate
             while (! validExp)
             {
                 Console.Write("Please enter your expiration date: ");
@@ -81,6 +87,7 @@ namespace SVM
                 string expiryDate = Console.ReadLine();
                 string[] dateParts = expiryDate.Split('/'); //expiry date in from MM/yyyy   
 
+                // Validate month
                 try
                 {
                     if (!monthCheck.IsMatch(dateParts[0]) || !yearCheck.IsMatch(dateParts[1])) // <3 - 6>
@@ -97,7 +104,7 @@ namespace SVM
                     Console.WriteLine("Invalid input. Please input as MM/YYYY");
                 }
 
-                // I'm not toally sure how the following lines of code are working. Mess with this later and try to break it. 
+                // Validate that the date entered makes sense in the context of today's date 
                 int year = int.Parse(dateParts[1]);
                 int month = int.Parse(dateParts[0]);
                 int lastDateOfExpiryMonth = DateTime.DaysInMonth(year, month); //get actual expiry date
@@ -106,16 +113,33 @@ namespace SVM
                 Console.WriteLine(cardExpiry > DateTime.Now && cardExpiry < DateTime.Now.AddYears(6));
             }
             
+            // If all fields are valid, print receipt.
             if (validCcNum && validCvv && validExp)
             {
                 ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
         }
 
+        // If the user wants to pay cash.
         public static void PayCash()
         {
-            Console.Write("Please insert cash: ");
-            decimal.TryParse(Console.ReadLine(), out decimal cash);
+            bool enoughCash = false;
+            decimal cash = 0;
+
+            while (!enoughCash)
+            {
+                Console.Write("Please insert cash: ");
+                decimal.TryParse(Console.ReadLine(), out cash);
+
+                if ((double)cash > MenuView.FinalTotal)
+                {
+                    enoughCash = true;
+                }
+                else
+                {
+                    Console.WriteLine("You didn't enter enough cash.");
+                }
+            }
 
             // set number of decimal places in user input to the decimalPlaces 
             int decimalPlaces = BitConverter.GetBytes(decimal.GetBits(cash)[3])[2];
@@ -125,8 +149,11 @@ namespace SVM
                 Console.WriteLine("Invalid Input. Enter currency formatted as $dd.cc Please try again.");
                 PayCash();
             }
+
+            // If the user enters a valid amount of cash, print receipt.
             else
             {
+                Console.Clear();
                 Console.WriteLine($"You paid: ${cash}. The total is ${MenuView.FinalTotal}. Here is your change: ${cash - (decimal)MenuView.FinalTotal} ");
                 ReceiptView.PrintReciept(VendingMachine.PurchasedItems); // final case
             }
