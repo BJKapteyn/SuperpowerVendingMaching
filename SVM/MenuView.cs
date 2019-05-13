@@ -17,7 +17,7 @@ namespace SVM
             Console.WriteLine($"Total Purchases: {SubTotal}\n");
             for(int i = 0; i < powers.Count; i++)
             {
-                Console.WriteLine($"Power {i+1}: {powers[i].Name}");
+                Console.WriteLine($"Power {i+1}: {AddSpaces(powers[i].Name)} {AddSpaces(powers[i].Category)} {AddSpaces(powers[i].Price)}");
             }
             int choice;
             Console.WriteLine("Please select:");
@@ -47,14 +47,35 @@ namespace SVM
             }
             //display list of powers
             //if user chooses to buy 
-                //ask how many
-                //calculate and add to total
-                //  VendingMachine.CalculateSubTotal(int index, int quantity)
-                //  Continue - this.DisplayMenu(powers)
-                //  Checkout
-                //back to main menu
+            //ask how many
+            //calculate and add to total
+            //  VendingMachine.CalculateSubTotal(int index, int quantity)
+            //  Continue - this.DisplayMenu(powers)
+            //  Checkout
+            //back to main menu
             //if user chooses checkout
-                //
+            //
+        }
+
+        public static object AddSpaces(double price)
+        {
+            string input = String.Format("{0:N2}", price);
+            int spaces = 20 - input.Length;
+            for (int i = 0; i < spaces; i++)
+            {
+                input += " ";
+            }
+            return input;
+        }
+
+        public static string AddSpaces(string input)
+        {
+            int spaces = 20 - input.Length;
+            for (int i = 0; i < spaces; i++)
+            {
+                input += " ";
+            }
+            return input;
         }
     }
 }
