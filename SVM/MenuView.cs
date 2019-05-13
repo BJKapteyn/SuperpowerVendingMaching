@@ -18,7 +18,7 @@ namespace SVM
             Console.WriteLine($"Total Purchases: {SubTotal}\n");
             for(int i = 0; i < powers.Count; i++)
             {
-                Console.WriteLine($"Power {i+1}: {powers[i].Name}");
+                Console.WriteLine($"Power {i+1}: {AddSpaces(powers[i].Name)} {AddSpaces(powers[i].Category)} {AddSpaces(powers[i].Price)}");
             }
 
             int choice;
@@ -49,6 +49,28 @@ namespace SVM
                     ReceiptView.PrintCart(BoughtPower, powers);
                 }
             }
+
+        }
+
+        public static object AddSpaces(double price)
+        {
+            string input = String.Format("{0:N2}", price);
+            int spaces = 20 - input.Length;
+            for (int i = 0; i < spaces; i++)
+            {
+                input += " ";
+            }
+            return input;
+        }
+
+        public static string AddSpaces(string input)
+        {
+            int spaces = 20 - input.Length;
+            for (int i = 0; i < spaces; i++)
+            {
+                input += " ";
+            }
+            return input;
         }
     }
 }
